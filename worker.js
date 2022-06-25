@@ -54,5 +54,4 @@ function Worker(name, tasks = []) {
 
 // EXPORTS
 
-//export {Worker, curry};
 module.exports = {Worker, curry};
