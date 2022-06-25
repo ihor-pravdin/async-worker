@@ -1,9 +1,9 @@
 #name: Embed code into README
 #
-#on:
-#  pull_request:
-#    branches:
-#      - main
+on:
+  pull_request:
+    branches:
+      - main
 #jobs:
 #  readme-test:
 #    runs-on: ubuntu-latest
@@ -22,5 +22,9 @@
 #          message: "auto commit for embedding"
 #          no_change: "No change on Readme."
 #          silent: false
-- name: Markdown autodocs
-  uses: dineshsonachalam/markdown-autodocs@v1.0.3
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Markdown autodocs
+        uses: dineshsonachalam/markdown-autodocs@v1.0.3
