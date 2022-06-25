@@ -54,7 +54,4 @@ function Worker(name, tasks = []) {
 
 // EXPORTS
 
-module.exports = {
-    Worker,
-    curry
-};
+export {Worker, curry};

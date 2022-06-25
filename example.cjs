@@ -1,4 +1,6 @@
-const {Worker, curry} = require('./worker');
+// const {Worker, curry} = require('./worker');
+import {Worker, curry} from './worker';
+
 
 const fn = (str, callback) => {
     const timeout = Math.floor(Math.random() * 500) + 500;
