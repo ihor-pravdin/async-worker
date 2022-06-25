@@ -25,6 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # Install nodejs
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'npm'
+
       # markdown-autodocs
       - name: Markdown autodocs
         uses: dineshsonachalam/markdown-autodocs@v1.0.3
