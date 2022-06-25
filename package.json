@@ -2,7 +2,7 @@
   "name": "async-worker",
   "version": "1.0.0",
   "description": "Async worker for running iterator on the current event loop, with 'up/down stream'.",
-  "main": "index.js",
+  "main": "worker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
