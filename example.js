@@ -1,5 +1,5 @@
 // const {Worker, curry} = require('./worker');
-import {Worker, curry} from './worker';
+import {Worker, curry} from './worker.js';
 
 
 const fn = (str, callback) => {
