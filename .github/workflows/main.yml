@@ -27,7 +27,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 12.0.0
+          node-version: 18.0.0
           cache: 'npm'
 
       # markdown-autodocs
