@@ -27,10 +27,15 @@ jobs:
 
       # Install nodejs
 #      - uses: actions/setup-node@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.7
 
       # markdown-autodocs
       - name: Markdown autodocs
         uses: dineshsonachalam/markdown-autodocs@v1.0.4
+        with:
+          silent: false
 #      - uses: tokusumi/markdown-embed-code@v1.0.0
 #        with:
 #          markdown: "README.md"
