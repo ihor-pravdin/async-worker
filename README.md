@@ -3,8 +3,5 @@ Async worker for running iterator on the current event loop, with 'up/down strea
 
 ### Usage
 
-```js:./example.js
-```
-
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./example.js) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
