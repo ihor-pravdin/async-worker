@@ -46,6 +46,4 @@ function Worker(name, tasks = []) {
     }
 }
 
-Worker.constructor.name = 'Worker';
-
 module.exports = Worker;
