@@ -7,8 +7,5 @@ Package has zero dependencies and works in browser as well.
 Functions that called with `yield` keyword inside generators should take only one argument **callback**. 
 Use `curry` and `callbackify` helpers to make suitable functions with single **callback** arg.  
 
-```javascript:example.js
-```
-
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./example.js) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
