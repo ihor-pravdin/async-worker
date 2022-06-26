@@ -9,3 +9,6 @@ Use `curry` and `callbackify` helpers to make suitable functions with single **c
 
 ```javascript:example.js
 ```
+
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./example.js) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
