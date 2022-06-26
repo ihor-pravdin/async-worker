@@ -14,5 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - run: node -v
+
+    - run: npm -v
+
     - name: Markdown autodocs
       uses:  dineshsonachalam/markdown-autodocs@v1.0.4
