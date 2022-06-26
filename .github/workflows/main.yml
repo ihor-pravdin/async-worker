@@ -9,12 +9,18 @@ on:
 jobs:
   embed-code:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
 
+    - run: wget https://raw.githubusercontent.com/dineshsonachalam/markdown-autodocs/master/action.py
+      shell: bash
+
+    - run: python3 action.py -repo '${{ github.repository }}' -access_token '${{ github.token }}'
+      shell: bash
+
 #    - run: npm i -g markdown-autodocs
 
-    - name: Markdown autodocs
-      uses:  dineshsonachalam/markdown-autodocs@v1.0.3
+#    - name: Markdown autodocs
+#      uses:  dineshsonachalam/markdown-autodocs@v1.0.3
