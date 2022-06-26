@@ -40,7 +40,7 @@ jobs:
     steps:
     - run: wget https://raw.githubusercontent.com/dineshsonachalam/markdown-autodocs/master/action.py
       shell: bash
-    - run: python3 action.py -repo '${{ github.repository }}' -access_token '${{ github.token }}' -commit_author '${{ inputs.commit_author  }}' -commit_user_email '${{ inputs.commit_user_email  }}' -commit_message '${{ inputs.commit_message  }}' -branch '${{ inputs.branch }}' -output_file_paths '${{ inputs.output_file_paths }}' -categories '${{ inputs.categories }}'
+    - run: python3 action.py -repo '${{ github.repository }}' -access_token '${{ github.token }}' -commit_author '${{ github.actor }}' -commit_user_email '${{ actions@github.com }}' -commit_message 'Apply automatic changes' -branch '${{ github.ref }}' -output_file_paths '[./README.md]' -categories ''[code-block,json-to-html-table,workflow-artifact-table,markdown]'
       shell: bash
 #    - uses: actions/checkout@v3
 #    - uses: actions/setup-node@v3
