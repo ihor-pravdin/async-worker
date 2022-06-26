@@ -23,6 +23,7 @@ jobs:
         cache: 'npm'
 
     - run: npm i -g markdown-autodocs
+    - run: node --experimental-modules --input-type=module /opt/hostedtoolcache/node/12.11.1/x64/lib/node_modules/markdown-autodocs/index.js
 
 
 #    - name: Markdown autodocs
