@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: pip install gssapi
       - uses: tokusumi/markdown-embed-code@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
