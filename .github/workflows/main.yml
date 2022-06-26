@@ -6,19 +6,48 @@ on:
   pull_request:
     branches: [ "main" ]
 
+inputs:
+  commit_author:
+    description: Value used for the commit author. Defaults to the username of whoever triggered this workflow run.
+    required: false
+    default: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+  commit_user_email:
+    description: Email address used for the commit user
+    required: false
+    default: actions@github.com
+  commit_message:
+    description: Commit message
+    required: false
+    default: Apply automatic changes
+  branch:
+    description: Git branch name, where changes should be pushed too.
+    required: false
+    default: ${{ github.ref }}
+  output_file_paths:
+    description: Output markdown file paths.
+    required: false
+    default: '[./README.md]'
+  categories:
+    description: Categories to automatically sync or transform its contents in the markdown files.
+    required: false
+    default: '[code-block,json-to-html-table,workflow-artifact-table,markdown]'
+
 jobs:
   embed-code:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-
     - run: wget https://raw.githubusercontent.com/dineshsonachalam/markdown-autodocs/master/action.py
       shell: bash
-
-    - run: python3 action.py -repo '${{ github.repository }}' -access_token '${{ github.token }}'
+    - run: python3 action.py -repo '${{ github.repository }}' -access_token '${{ github.token }}' -commit_author '${{ inputs.commit_author  }}' -commit_user_email '${{ inputs.commit_user_email  }}' -commit_message '${{ inputs.commit_message  }}' -branch '${{ inputs.branch }}' -output_file_paths '${{ inputs.output_file_paths }}' -categories '${{ inputs.categories }}'
       shell: bash
+#    - uses: actions/checkout@v3
+#    - uses: actions/setup-node@v3
+#      with:
+#        node-version: v12.11.1
+#        cache: 'npm'
+
 
 #    - run: npm i -g markdown-autodocs
 
