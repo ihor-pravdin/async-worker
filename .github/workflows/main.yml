@@ -23,5 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+      - run: pwd
+      - run: ls -la
       - run: npm install --global assemble
       - run: assemble
