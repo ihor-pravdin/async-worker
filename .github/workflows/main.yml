@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: 16.x
           cache: 'npm'
-      - run: mpm ci
+      - run: npm ci
       - run: npm install --location=global assemble
-      - run: assemble
+      - run: assemble embed
