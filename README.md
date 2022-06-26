@@ -1,11 +1,11 @@
 # async-worker
-Async worker for running iterator on the current event loop, with 'up/down stream'. 
+Async worker for running iterator on the current event loop with "*down/up execution stream*". 
 Package has zero dependencies and works in browser as well.
 
 ## Usage
 
-Functions that called with 'yield' keyword inside generators should take only one argument 'callback'. 
-Use 'curry' and 'callbackify' helpers to make suitable functions with single 'callback' arg.  
+Functions that called with `yield` keyword inside generators should take only one argument **callback**. 
+Use `curry` and `callbackify` helpers to make suitable functions with single **callback** arg.  
 
 ```js
 const {Worker, curry, callbackify} = require('./worker');
