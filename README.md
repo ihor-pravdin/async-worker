@@ -96,3 +96,5 @@ worker.run(workerContext, function (err, ctx) {
 // Context:  { result1: { str: 'fn1', timeout: 803 } }
 
 ```
+
+\{{ embed './example.js' }}
