@@ -4,8 +4,8 @@
 
 const curry = (ctx, fn, ...args) => callback => fn.call(ctx, ...args, callback);
 
-const callbackify = (ctx, afn, ...args) => callback => {
-    return afn.call(ctx, ...args).then(result => callback(null, result)).catch(err => callback(err));
+const callbackify = (ctx, fn, ...args) => callback => {
+    return Promise.resolve(fn.apply(ctx, args)).then(result => callback(null, result)).catch(err => callback(err));
 };
 
 // WORKER
