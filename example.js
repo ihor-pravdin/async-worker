@@ -1,20 +1,34 @@
-const {Worker, curry} = require('./worker');
+const {Worker, curry, callbackify} = require('./worker');
 
-const fn = (str, callback) => {
-    const timeout = Math.floor(Math.random() * 500) + 500;
+// callback function
+const cfn = (str, callback) => {
+    const timeout = Math.floor(Math.random() * 500) + 500; // random int from 500 to 1000
     setTimeout(() => {
         console.log(str);
-        return timeout > 950
-            ? callback(new Error('Timeout error.'))
+        return timeout > 950 // returns error if 'timeout' > 950
+            ? callback(new Error(`Timeout error '${timeout}'.`))
             : callback(null, {str, timeout});
     }, timeout);
 };
 
-const fn1 = curry(null, fn, 'fn1'); // or fn.bind(null, 'fn1')
-const fn2 = curry(null, fn, 'fn2');
-const fn3 = curry(null, fn, 'fn3');
-const fn4 = curry(null, fn, 'fn4');
-const fn5 = curry(null, fn, 'fn5');
+// promise function
+const pfn = (str) => {
+    const timeout = Math.floor(Math.random() * 500) + 500; // random int from 500 to 1000
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log(str);
+            return timeout > 950 // returns error if 'timeout' > 950
+                ? reject(new Error(`Timeout error '${timeout}'.`))
+                : resolve({str, timeout});
+        }, timeout);
+    });
+};
+
+const fn1 = curry(null, cfn, 'fn1'); // or cfn.bind(null, 'fn1')
+const fn2 = callbackify(null, pfn, 'fn2');
+const fn3 = curry(null, cfn, 'fn3');
+const fn4 = callbackify(null, pfn, 'fn4');
+const fn5 = curry(null, cfn, 'fn5');
 
 const workerContext = {};
 
@@ -53,11 +67,11 @@ worker.run(workerContext, function (err, ctx) {
 // fn4
 // fn5
 // Context:  {
-//     result1: { str: 'fn1', timeout: 735 },
-//     result2: { str: 'fn2', timeout: 915 },
-//     result3: { str: 'fn3', timeout: 941 },
-//     result4: { str: 'fn4', timeout: 909 },
-//     result5: { str: 'fn5', timeout: 586 }
+//     result1: { str: 'fn1', timeout: 792 },
+//     result2: { str: 'fn2', timeout: 785 },
+//     result3: { str: 'fn3', timeout: 909 },
+//     result4: { str: 'fn4', timeout: 562 },
+//     result5: { str: 'fn5', timeout: 849 }
 // }
 
 
@@ -65,8 +79,8 @@ worker.run(workerContext, function (err, ctx) {
 //
 // fn1
 // fn2
-// Error:  Error: Timeout error.
-//     at Timeout._onTimeout (/mnt/g/Workspace/async-worker/example.js:8:24)
-// at listOnTimeout (node:internal/timers:559:17)
-// at processTimers (node:internal/timers:502:7)
-// Context:  { result1: { str: 'fn1', timeout: 753 } }
+// Error:  Error: Timeout error '965'.
+//     at Timeout._onTimeout (/mnt/g/Workspace/async-worker/example.js:9:24)
+//     at listOnTimeout (node:internal/timers:559:17)
+//     at processTimers (node:internal/timers:502:7)
+// Context:  { result1: { str: 'fn1', timeout: 803 } }

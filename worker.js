@@ -4,6 +4,10 @@
 
 const curry = (ctx, fn, ...args) => callback => fn.call(ctx, ...args, callback);
 
+const callbackify = (ctx, afn, ...args) => callback => {
+    return afn.call(ctx, ...args).then(result => callback(null, result)).catch(err => callback(err));
+};
+
 // WORKER
 
 function Worker(name, tasks = []) {
@@ -54,4 +58,4 @@ function Worker(name, tasks = []) {
 
 // EXPORTS
 
-module.exports = {Worker, curry};
+module.exports = {Worker, curry, callbackify};

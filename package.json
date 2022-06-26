@@ -4,7 +4,7 @@
   "description": "Async worker for running iterator on the current event loop, with 'up/down stream'.",
   "main": "worker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node example.js"
   },
   "repository": {
     "type": "git",
