@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-#        with:
-#          fetch-depth: 0
+        with:
+          fetch-depth: 0
 #          ref: refs/heads/${{ github.head_ref }}
       - run: npm run readmemd
       - name: check for changes
@@ -19,6 +19,7 @@ jobs:
           else
             echo "::set-env name=changes_exist::false"
           if
+
       - name: commit and push changes
         if: ${{ env.changes_exist == 'true' }}
         run: |
