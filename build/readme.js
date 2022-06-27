@@ -7,7 +7,7 @@ const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8')
 console.log('test', "-foo-".match(/-(\w*?)-/));
 console.log('test', ("```foo```" + readmemd).match(/```(\w*?)```/));
 
-const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\r\s```/gs));
+const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\s```/gs));
 console.log('match', readmemd.match(/```(\w*?):(.*?)\r\s```/));
 console.log('paths', paths);
 
