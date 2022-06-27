@@ -17,9 +17,9 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: |
           if git diff --exit-code --quiet; then
-            echo "::set-env name=changes_exist::true"
-          else
             echo "::set-env name=changes_exist::false"
+          else
+            echo "::set-env name=changes_exist::true"
           fi
       - name: commit and push changes
         if: ${{ env.changes_exist == 'true' }}
