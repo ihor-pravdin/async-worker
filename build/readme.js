@@ -3,10 +3,12 @@ const path = require('node:path');
 
 const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8');
 
-console.log('readmemd:', readmemd);
+// console.log('readmemd:', readmemd);
+console.log('test', "-foo-".match(/-(\w*?)-/));
+console.log('test', readmemd.match(/```(\w*?)```/));
 
 const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\r\s```/gs));
-console.log('match', readmemd.match(/```(\w*?):(.*?)\r\s```/s));
+console.log('match', readmemd.match(/```(\w*?):(.*?)\r\s```/));
 console.log('paths', paths);
 
 const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s```/gs, (match, lang, scriptPath) => {
@@ -16,4 +18,4 @@ const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s```/gs, (match, lang, s
 
 console.log('embedded:', embedded);
 
-fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded + "foofoofoo");
+//fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded);
