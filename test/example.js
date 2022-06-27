@@ -1,4 +1,6 @@
-const {Worker, curry, callbackify} = require('./worker');
+'use strict';
+
+const {Worker, curry, callbackify} = require('../src/index');
 
 // callback function
 const cfn = (str, callback) => {
