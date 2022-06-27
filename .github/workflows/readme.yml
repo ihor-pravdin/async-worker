@@ -1,0 +1,33 @@
+name: Embed code in README
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - reopened
+
+jobs:
+  embed-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: refs/heads/${{ github.head_ref }}
+      - run: npm run readmemd
+      - name: check for changes
+        run: |
+          if git diff --exit-code --quite; then
+            echo "::set-env name=changes_exist::true"
+          else
+            echo "::set-env name=changes_exist::false"
+          if
+      - name: commit and push changes
+        if: ${{ env.changes_exist == 'true' }}
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "update README.md"
+          git push
