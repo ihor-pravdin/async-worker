@@ -6,6 +6,7 @@ const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8')
 console.log('readmemd', readmemd);
 
 const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\r\s```/gs));
+console.log(readmemd.match(/```(\w*?):(.*?)\r\s```/gs));
 console.log('paths', paths);
 
 const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s```/gs, (match, lang, scriptPath) => {
