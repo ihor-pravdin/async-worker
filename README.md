@@ -9,8 +9,3 @@ Use `curry` and `callbackify` helpers to make suitable functions with single **c
 
 ```js:./test/example.js
 ```
-
-### Foo
-
-```js:./test/foo.js
-```

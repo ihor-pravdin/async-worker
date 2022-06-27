@@ -7,6 +7,7 @@
     "src/*"
   ],
   "scripts": {
+    "readmemd": "node build/readme.js",
     "test": "node test/example.js"
   },
   "repository": {

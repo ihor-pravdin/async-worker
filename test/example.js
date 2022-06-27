@@ -1,5 +1,3 @@
-'use strict';
-
 const {Worker, curry, callbackify} = require('../src/index');
 
 // callback function

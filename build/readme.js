@@ -3,14 +3,12 @@ const path = require('node:path');
 
 const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8');
 
-// const paths = Array.from(readmemd.matchAll(/```js:(.*?)\r\s```/gs), m => m[1]);
+// const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\r\s/gs));
+// console.log(paths);
 
-// const scripts = paths.map(path => fs.readFileSync(path, 'utf8'));
-
-const embedded = readmemd.replaceAll(/```js:(.*?)\r\s```/gs, (match, scriptPath) => {
+const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s/gs, (match, lang, scriptPath) => {
     const script = fs.readFileSync(scriptPath, 'utf8');
-    return '```\r\n' + script + '\r\n```';
+    return match + script;
 });
 
-console.log(embedded)
-
+fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded);
