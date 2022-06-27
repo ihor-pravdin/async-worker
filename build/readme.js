@@ -3,6 +3,8 @@ const path = require('node:path');
 
 const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8');
 
+const regexp = /`{3}(\w*?):((\.{0,2}[\/?\w]*\.?\w*\s*?)(.*?)\s*)`{3}/gs;
+
 // console.log('readmemd:', readmemd);
 // console.log('test', ("```foo```" + readmemd).match(/```(\w*?)```/));
 
@@ -18,17 +20,20 @@ const readmemd = fs.readFileSync(path.dirname(__dirname) + '/README.md', 'utf8')
 //     '```js:./test/example.js\n' +
 //     '```'
 //
-// console.log('match', foo.match(/`{3}(\w*?):(.*?)\s*`{3}/));
-// const paths = Array.from(readmemd.matchAll(/```(\w*?):(.*?)\r+\s+```/gs));
+// console.log('match', readmemd.match(/`{3}(\w*?):(.*?)\s`{3}/gs));
+// const paths = Array.from(readmemd.matchAll(/`{3}(\w*?):((\.{0,2}[\/?\w]*\.?\w*.*?).*?)\s`{3}/gs), m => m[3]);
 // console.log('paths', paths);
 
-const embedded = readmemd.replaceAll(/`{3}(\w*?):(.*?)\s*`{3}/gs, (match, lang, scriptPath) => {
+const embedded = readmemd.replaceAll(regexp, (match, g1, g2, g3) => {
+    const lang = g1;
+    const scriptPath = g3;
     const script = path.resolve(path.dirname(__dirname), scriptPath);
     if (fs.existsSync(script)) {
+        console.log('foo')
         const code = fs.readFileSync(script, 'utf8');
-        return '```' + lang + ':' + scriptPath + '\r\n' + code + '```';
+        return '```' + lang + ':' + scriptPath + '\n' + code + '```';
     }
-    return  match;
+    return match;
 });
 
 // console.log('embedded:', embedded);

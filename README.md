@@ -95,3 +95,15 @@ worker.run(workerContext, function (err, ctx) {
 //     at processTimers (node:internal/timers:502:7)
 // Context:  { result1: { str: 'fn1', timeout: 803 } }
 ```
+
+### Foo
+
+```js:./test/foo.js
+console.log('foo');
+```
+
+### Bar
+
+```js
+console.log('bar')
+```
