@@ -12,16 +12,17 @@ jobs:
 #          fetch-depth: 0
 #          ref: refs/heads/${{ github.head_ref }}
       - run: npm run readmemd
-#      - name: check for changes
-#        run: |
-#          if git diff --exit-code --quiet; then
-#            echo "::set-env name=changes_exist::true"
-#          else
-#            echo "::set-env name=changes_exist::false"
-#          fi
+      - name: check for changes
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        run: |
+          if git diff --exit-code --quiet; then
+            echo "::set-env name=changes_exist::true"
+          else
+            echo "::set-env name=changes_exist::false"
+          fi
       - name: commit and push changes
-#        if: ${{ env.changes_exist == 'true' }}
-        if: git diff --exit-code --quiet
+        if: ${{ env.changes_exist == 'true' }}
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
