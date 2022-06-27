@@ -16,4 +16,4 @@ const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s```/gs, (match, lang, s
 
 console.log('embedded:', embedded);
 
-//fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded);
+fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded + "foofoofoo");
