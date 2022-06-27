@@ -11,4 +11,6 @@ const embedded = readmemd.replaceAll(/```(\w*?):(.*?)\r\s```/gs, (match, lang, s
     return '```' + lang + ':' + scriptPath + '\r\n' + script + '```';
 });
 
+console.log(embedded);
+
 fs.writeFileSync(path.dirname(__dirname) + '/README.md', embedded);
