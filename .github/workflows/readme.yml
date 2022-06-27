@@ -8,13 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+#        with:
+#          fetch-depth: 0
 #          ref: refs/heads/${{ github.head_ref }}
       - run: ls -la
-      - run: |
-          npm run readmemd
-          cat README.md
+      - run: node build/readme.js
       - name: check for changes
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
@@ -24,11 +22,11 @@ jobs:
           else
             echo "::set-env name=changes_exist::true"
           fi
+      - run: ls -la
       - name: commit and push changes
         if: ${{ env.changes_exist == 'true' }}
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          git add .
           git commit -m "update README.md"
           git push
