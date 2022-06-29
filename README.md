@@ -77,4 +77,21 @@ worker.run(workerContext, function (err, ctx) {
 // fn4
 // fn5
 // Context:  {
-//     result1: { str: 'fn1', timeout: 792 },```
+//     result1: { str: 'fn1', timeout: 792 },
+//     result2: { str: 'fn2', timeout: 785 },
+//     result3: { str: 'fn3', timeout: 909 },
+//     result4: { str: 'fn4', timeout: 562 },
+//     result5: { str: 'fn5', timeout: 849 }
+// }
+
+
+// Fail:
+//
+// fn1
+// fn2
+// Error:  Error: Timeout error '965'.
+//     at Timeout._onTimeout (/mnt/g/Workspace/async-worker/example.js:9:24)
+//     at listOnTimeout (node:internal/timers:559:17)
+//     at processTimers (node:internal/timers:502:7)
+// Context:  { result1: { str: 'fn1', timeout: 803 } }
+```
