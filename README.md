@@ -7,7 +7,7 @@ Package has zero dependencies and works in browser as well.
 Functions that called with `yield` keyword inside generators should take only one argument **callback**. 
 Use `curry` and `callbackify` helpers to make suitable functions with single **callback** arg.  
 
-```js:./test/example.js [1-71]
+```js:./test/example.js
 const {Worker, curry, callbackify} = require('../src/index');
 
 // callback function
